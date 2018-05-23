@@ -6,6 +6,6 @@ import javafx.scene.input.KeyEvent;
 public class Keyboard implements EventHandler<KeyEvent> {
     @Override
     public void handle(KeyEvent event) {
-
+        System.out.println("x");
     }
 }
