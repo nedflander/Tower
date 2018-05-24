@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class Enemy extends Rectangle {
     private int health, speed;
-    private int x = 40, y = 705, width = 40, height = 40;
+    private int x = 28, y = 665, width = 40, height = 40;
 
     private Direction dir = Direction.NORTH;
     public static ArrayList<Enemy> enemies = new ArrayList<>();
