@@ -1,31 +1,48 @@
 package co.hypw;
 
+import javafx.scene.shape.Rectangle;
+
 import java.util.ArrayList;
 
-public class Enemy {
-    private int health, speed, damage;
-    private int x, y;
+public class Enemy extends Rectangle {
+    private int health, speed;
+    private int x = 40, y = 705, width = 40, height = 40;
 
     private Direction dir = Direction.NORTH;
-    public ArrayList<Enemy> enemies = new ArrayList<>();
+    public static ArrayList<Enemy> enemies = new ArrayList<>();
 
-    public Enemy() {
-        setup();
+    public Enemy(int health, int speed) {
+        this.health = health;
+        this.speed = speed;
+        setX(x);
+        setY(y);
+        setWidth(width);
+        setHeight(height);
     }
 
-    private void setup() {
-
-    }
 
     public void move() {
         switch(dir) {
             case NORTH:
+                this.y -=speed;
                 break;
-            case EAST: break;
-            case WEST: break;
-            case SOUTH: break;
+            case EAST:
+                this.x += speed;
+                break;
+            case WEST:
+                this.x -= speed;
+                break;
+            case SOUTH:
+                this.y +=speed;
+                break;
 
         }
+        update();
+    }
+
+    private void update() {
+        setY(y);
+        setX(x);
     }
 
     public enum Direction {

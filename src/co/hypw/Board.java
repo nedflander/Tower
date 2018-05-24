@@ -7,7 +7,14 @@ public class Board  extends Group {
     public Board() {
         generateGrid();
         drawGrid();
+        makeEnemy();
     }
+
+    private void makeEnemy() {
+        MyYute yute = new MyYute(1, 1);
+        this.getChildren().add(yute);
+    }
+
     public void generateGrid() {
         for(int i = 0; i<12; i++) {
             for(int j=0; j<12; j++) {

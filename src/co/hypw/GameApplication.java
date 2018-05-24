@@ -37,7 +37,9 @@ public class GameApplication extends Application  {
     }
 
     private void game() {
-        //r.setX(r.getX()+move);
+        for(Enemy enemy: Enemy.enemies) {
+            enemy.move();
+        }
 
     }
 
