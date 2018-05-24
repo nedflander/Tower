@@ -23,7 +23,7 @@ public class GameApplication extends Application  {
         primaryStage.setScene(scene);
         primaryStage.show();
         primaryStage.setResizable(false);
-        primaryStage.setTitle("Shitty Bloons TD 6");
+        primaryStage.setTitle("Shitty Bloons TD 5");
         scene.addEventHandler(MouseEvent.MOUSE_CLICKED, new Mouse());
 
 
