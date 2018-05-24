@@ -25,7 +25,7 @@ public class GameApplication extends Application  {
         primaryStage.setResizable(false);
         primaryStage.setTitle("Shitty Bloons TD 5");
         scene.addEventHandler(MouseEvent.MOUSE_CLICKED, new Mouse());
-
+        drawBoard();
 
 
 
