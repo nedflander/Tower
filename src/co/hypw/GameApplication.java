@@ -25,11 +25,8 @@ public class GameApplication extends Application  {
         primaryStage.setResizable(false);
         primaryStage.setTitle("Shitty Bloons TD 6");
         scene.addEventHandler(MouseEvent.MOUSE_CLICKED, new Mouse());
-        Menu menu = new Menu();
-        root.getChildren().add(menu);
 
-        generateGrid();
-        drawGrid();
+
 
 
         new AnimationTimer() {
@@ -43,27 +40,14 @@ public class GameApplication extends Application  {
         //r.setX(r.getX()+move);
 
     }
-    public void generateGrid() {
-        for(int i = 0; i<12; i++) {
-            for(int j=0; j<12; j++) {
-                new Tile(20+j*55, 45+i*55, 55, 55, i*12+j);
-            }
-        }
-        new PrepareMap();
+
+    public void drawBoard() {
+        Board board = new Board();
+        root.getChildren().add(board);
     }
 
-    public void drawGrid() {
-        for(Tile tile: Tile.tiles) {
-            if (tile.getType()==Tile.Type.FRIENDLY) {
-                tile.setFill(Color.GREEN);
-            } else if (tile.getType()==Tile.Type.BARRIER) {
-                tile.setFill(Color.BLACK);
-            } else if (tile.getType()==Tile.Type.ENEMY) {
-                tile.setFill(Color.RED);
-            } else if (tile.getType()==Tile.Type.NORTH|| tile.getType()==Tile.Type.SOUTH || tile.getType()==Tile.Type.WEST || tile.getType()==Tile.Type.EAST) {
-                tile.setFill(Color.GREEN);
-            }
-            root.getChildren().add(tile);
-        }
+    public void drawMenu() {
+        Menu menu = new Menu();
+        root.getChildren().add(menu);
     }
 }
