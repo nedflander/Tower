@@ -27,6 +27,7 @@ public class Board  extends Group {
                 tile.setFill(Color.RED);
             } else if (tile.getType()==Tile.Type.NORTH|| tile.getType()==Tile.Type.SOUTH || tile.getType()==Tile.Type.WEST || tile.getType()==Tile.Type.EAST) {
                 tile.setFill(Color.GREEN);
+                System.out.println( "X");
             }
             this.getChildren().add(tile);
         }
