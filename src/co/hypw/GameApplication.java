@@ -25,6 +25,8 @@ public class GameApplication extends Application  {
         primaryStage.setResizable(false);
         primaryStage.setTitle("Shitty Bloons TD 6");
         scene.addEventHandler(MouseEvent.MOUSE_CLICKED, new Mouse());
+        Menu menu = new Menu();
+        root.getChildren().add(menu);
 
         generateGrid();
         drawGrid();
