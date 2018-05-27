@@ -77,7 +77,7 @@ public class GameApplication extends Application  {
         StackPane creditLayout = new StackPane();
 
 
-
+        //text
         Text title = new Text();
         title.setCache(true);
         title.setText("STL CAF DEFENSE");
