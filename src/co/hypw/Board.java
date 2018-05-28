@@ -11,8 +11,9 @@ public class Board  extends Group {
     }
 
     private void makeEnemy() {
-        MyYute yute = new MyYute(1, 1, 1);
-        this.getChildren().add(yute);
+        MyYute yute = new MyYute(1, 1, 1, 28, 665);
+        MyYute yute2 = new MyYute(1, 1, 1, 28, 740);
+        this.getChildren().addAll(yute, yute2);
     }
 
     public void generateGrid() {

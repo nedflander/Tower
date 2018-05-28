@@ -44,12 +44,13 @@ public class GameApplication extends Application  {
         primaryStage.setResizable(false);
         primaryStage.setTitle("Shitty Bloons TD 5");
 
-        scene.setFill(bg);
+        //scene.setFill(bg);
 
         scene.addEventHandler(MouseEvent.MOUSE_CLICKED, new Mouse());
 
-        drawMenu();
+        //drawMenu();
 
+        drawBoard();
         new AnimationTimer() {
             public void handle(long currentNanoTime) {
                 game();
@@ -59,7 +60,9 @@ public class GameApplication extends Application  {
     }
 
     private void game() {
-        //r.setX(r.getX()+move);
+        for(Enemy enemy: Enemy.enemies) {
+            enemy.move();
+        }
 
     }
 
