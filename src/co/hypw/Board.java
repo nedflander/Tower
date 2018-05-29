@@ -1,5 +1,6 @@
 package co.hypw;
 
+import co.hypw.Enemies.Choch;
 import co.hypw.Enemies.Enemy;
 import co.hypw.Enemies.MyYute;
 import javafx.scene.Group;
@@ -24,20 +25,21 @@ public class Board  extends Group {
         timer.schedule(
                 new java.util.TimerTask() {
                     public void run() {
-                        MyYute yute = new MyYute(1, 1, 1, 28, 665);
-                        que.add(yute);
-                        System.out.println("x");
+                        count++;
+                        //System.out.println(count);
+                        Enemy enemy;
+                        if(count%2==0) {
+                            System.out.println(count +"y");
+                            enemy = new MyYute(1, 1, 1, 28, 665);
+                        } else {
+                            enemy = new Choch(1, 1, 1, 28, 665);
+                            System.out.println(count);
+                        }
+                        que.add(enemy);
                     }
                 },
-                1
+                0, 1000
         );
-        if(que.size()>1) {
-            this.getChildren().add(que.get(0));
-            que.clear();
-        }
-        //MyYute yute = new MyYute(1, 1, 1, 28, 665);
-        //MyYute yute2 = new MyYute(1, 1, 1, 28, 740);
-        //this.getChildren().addAll(yute, yute2);
     }
 
     public void generateGrid() {
@@ -64,7 +66,12 @@ public class Board  extends Group {
         }
     }
 
-    public Board returnThis() {
-        return this;
+    public void makeWave() {
+        if(que.size()>1) {
+            for(Enemy enemy: que) {
+                this.getChildren().add(que.get(que.indexOf(enemy)));
+                que.clear();
+            }
+        }
     }
 }

@@ -28,6 +28,7 @@ public class GameApplication extends Application  {
     public static Rectangle r;
     private Group root;
     private Scene scene;
+    private Board board;
     Image stl = null;
 
 
@@ -59,6 +60,7 @@ public class GameApplication extends Application  {
     }
 
     private void game() {
+        board.makeWave();
         for(Enemy enemy: Enemy.enemies) {
             enemy.move();
         }
@@ -66,7 +68,7 @@ public class GameApplication extends Application  {
     }
 
     public void drawBoard() {
-        Board board = new Board();
+        board = new Board();
         root.getChildren().add(board);
     }
 
