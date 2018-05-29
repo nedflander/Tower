@@ -110,16 +110,19 @@ public class Enemy extends Rectangle {
             switch (black.get(0).getType()) {
                 case NORTH:
                     setDir(Direction.NORTH);
-
+                    setRotate(0);
                     break;
                 case EAST:
                     setDir(Direction.EAST);
+                    setRotate(90);
                     break;
                 case WEST:
                     setDir(Direction.WEST);
+                    setRotate(270);
                     break;
                 case SOUTH:
                     setDir(Direction.SOUTH);
+                    setRotate(180);
                     break;
                 default:
                     break;
