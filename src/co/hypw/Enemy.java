@@ -2,6 +2,7 @@ package co.hypw;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 
@@ -16,7 +17,7 @@ public class Enemy extends Rectangle {
     private int health, speed, damage;
     private int x, y, width = 40, height = 40;
     private Type type;
-    ImageView image;
+    Image image;
 
     private Direction dir = Direction.NORTH;
     public static ArrayList<Enemy> enemies = new ArrayList<>();
@@ -36,12 +37,21 @@ public class Enemy extends Rectangle {
     }
 
     private void setImage() {
-
+        try {
+            switch (type) {
+                case MYYUTE:
+                    image = new Image(new FileInputStream("myyute.png"), 850, 750, true, true);
+                    ImagePattern bg = new ImagePattern(image);
+                    this.setFill(bg);
+                    break;
+            }
+        } catch(Exception e) {
+            System.out.println(e);
+        }
     }
 
 
     public void move() {
-        System.out.println(dir);
         tileInteract();
         switch(dir) {
             case NORTH:
