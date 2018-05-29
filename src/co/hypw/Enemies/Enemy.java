@@ -1,16 +1,11 @@
-package co.hypw;
+package co.hypw.Enemies;
 
+import co.hypw.Tile;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class Enemy extends Rectangle {
@@ -18,6 +13,7 @@ public class Enemy extends Rectangle {
     private int x, y, width = 40, height = 40;
     private Type type;
     Image image;
+    private boolean turning;
 
     private Direction dir = Direction.NORTH;
     public static ArrayList<Enemy> enemies = new ArrayList<>();
@@ -41,10 +37,13 @@ public class Enemy extends Rectangle {
             switch (type) {
                 case MYYUTE:
                     image = new Image(new FileInputStream("myyute.png"), 850, 750, true, true);
-                    ImagePattern bg = new ImagePattern(image);
-                    this.setFill(bg);
+                    break;
+                case CHOCH:
+                    image = new Image(new FileInputStream("choch.png"), 850, 750, true, true);
                     break;
             }
+            ImagePattern bg = new ImagePattern(image);
+            this.setFill(bg);
         } catch(Exception e) {
             System.out.println(e);
         }
