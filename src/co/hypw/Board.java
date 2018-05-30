@@ -4,8 +4,12 @@ import co.hypw.Enemies.Choch;
 import co.hypw.Enemies.Enemy;
 import co.hypw.Enemies.MyYute;
 import javafx.scene.Group;
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Rectangle;
 
+import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.Timer;
 
@@ -14,11 +18,27 @@ public class Board  extends Group {
     int count = 0;
     ArrayList<Enemy> que = new ArrayList<>();
     private Timer timer;
+    Image map;
 
     public Board() {
+        generateBackground();
         generateGrid();
         drawGrid();
         makeEnemy();
+    }
+
+    private void generateBackground() {
+        try {
+            map = new Image(new FileInputStream("map.png"), 660, 660, false, true);
+        } catch (Exception e) {
+
+        }
+
+        ImagePattern mapBG = new ImagePattern(map);
+        Rectangle x = new Rectangle(20, 45, 660, 660);
+        x.setFill(mapBG);
+
+        this.getChildren().add(x);
     }
 
     private void makeEnemy() {
@@ -53,13 +73,13 @@ public class Board  extends Group {
     public void drawGrid() {
         for(Tile tile: Tile.tiles) {
             if (tile.getType()==Tile.Type.FRIENDLY) {
-                tile.setFill(Color.MEDIUMAQUAMARINE);
+                //tile.setFill(Color.MEDIUMAQUAMARINE);
             } else if (tile.getType()==Tile.Type.BARRIER) {
-                tile.setFill(Color.BLACK);
+                //tile.setFill(Color.BLACK);
             } else if (tile.getType()==Tile.Type.ENEMY) {
-                tile.setFill(Color.RED);
+                //tile.setFill(Color.RED);
             } else if (tile.getType()==Tile.Type.NORTH|| tile.getType()==Tile.Type.SOUTH || tile.getType()==Tile.Type.WEST || tile.getType()==Tile.Type.EAST) {
-                tile.setFill(Color.YELLOW);
+                //tile.setFill(Color.YELLOW);
             }
             this.getChildren().add(tile);
         }
