@@ -16,8 +16,8 @@ public class Tile extends Rectangle {
         this.setY(y);
         this.setWidth(width);
         this.setHeight(height);
-        //this.setFill(Color.TRANSPARENT);
-        this.setStroke(Color.BLACK);
+        this.setFill(Color.TRANSPARENT);
+        //this.setStroke(Color.BLACK);
         this.id = id;
         tiles.add(this);
     }
