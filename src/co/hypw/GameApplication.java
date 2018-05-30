@@ -1,5 +1,6 @@
 package co.hypw;
 
+import co.hypw.Enemies.Enemy;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.event.Event;
@@ -18,17 +19,16 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
-import org.w3c.dom.css.Rect;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 
 public class GameApplication extends Application  {
 
     public static Rectangle r;
     private Group root;
     private Scene scene;
+    private Board board;
     Image stl = null;
 
 
@@ -60,6 +60,7 @@ public class GameApplication extends Application  {
     }
 
     private void game() {
+        board.makeWave();
         for(Enemy enemy: Enemy.enemies) {
             enemy.move();
         }
@@ -67,7 +68,7 @@ public class GameApplication extends Application  {
     }
 
     public void drawBoard() {
-        Board board = new Board();
+        board = new Board();
         root.getChildren().add(board);
     }
 

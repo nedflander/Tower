@@ -1,4 +1,4 @@
-package co.hypw;
+package co.hypw.Enemies;
 
 public class MyYute extends Enemy {
 
