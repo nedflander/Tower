@@ -113,6 +113,7 @@ public class Enemy extends Rectangle {
                     setRotate(0);
                     break;
                 case EAST:
+
                     setDir(Direction.EAST);
                     setRotate(90);
                     break;
