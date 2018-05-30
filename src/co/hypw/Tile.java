@@ -21,6 +21,14 @@ public class Tile extends Rectangle {
         this.id = id;
         tiles.add(this);
     }
+    public Tile(int x, int y, int width, int height) {
+        this.setX(x);
+        this.setY(y);
+        this.setWidth(width);
+        this.setHeight(height);
+        this.setFill(Color.WHITE);
+        this.setStroke(Color.BLACK);
+    }
 
     public enum Type {
         ENEMY,

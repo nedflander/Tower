@@ -30,6 +30,8 @@ public class GameApplication extends Application  {
     private Group root;
     private Scene scene;
     private Board board;
+    private SideMenu sidemenu;
+
     Image stl;
 
 
@@ -71,7 +73,10 @@ public class GameApplication extends Application  {
     public void drawBoard() {
         board = new Board();
         root.getChildren().add(board);
+
     }
+
+
 
     public void drawMenu() throws FileNotFoundException {
         //Menu menu = new Menu();

@@ -5,6 +5,7 @@ import co.hypw.Enemies.Enemy;
 import co.hypw.Enemies.MyYute;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 
 import java.util.ArrayList;
 import java.util.Timer;
@@ -16,9 +17,17 @@ public class Board  extends Group {
     private Timer timer;
 
     public Board() {
+        generateSideView();
         generateGrid();
         drawGrid();
         makeEnemy();
+
+
+    }
+
+    private void generateSideView() {
+        SideMenu sideMenu = new SideMenu();;
+        getChildren().add(sideMenu);
     }
 
     private void makeEnemy() {
@@ -45,6 +54,7 @@ public class Board  extends Group {
         for(int i = 0; i<12; i++) {
             for(int j=0; j<12; j++) {
                 new Tile(20+j*55, 45+i*55, 55, 55, i*12+j);
+
             }
         }
         new PrepareMap();
@@ -64,6 +74,7 @@ public class Board  extends Group {
             this.getChildren().add(tile);
         }
     }
+
 
     public void makeWave() {
             for(Enemy enemy: que) {
