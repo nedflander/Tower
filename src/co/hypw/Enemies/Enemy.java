@@ -9,16 +9,16 @@ import java.io.FileInputStream;
 import java.util.ArrayList;
 
 public class Enemy extends Rectangle {
-    private int health, speed, damage;
+    private int health, damage;
+    private double speed;
     private int x, y, width = 40, height = 40;
     private Type type;
-    Image image;
-    private boolean turning;
+    private Image image;
 
     private Direction dir = Direction.NORTH;
     public static ArrayList<Enemy> enemies = new ArrayList<>();
 
-    public Enemy(int health, int speed, int damage, Type type, int x, int y) {
+    public Enemy(int health, double speed, int damage, Type type, int x, int y) {
         this.health = health;
         this.speed = speed;
         this.damage = damage;
@@ -52,6 +52,7 @@ public class Enemy extends Rectangle {
 
     public void move() {
         tileInteract();
+        System.out.println(speed);
         switch(dir) {
             case NORTH:
                 this.y -=speed;

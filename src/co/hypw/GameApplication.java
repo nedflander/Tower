@@ -45,20 +45,20 @@ public class GameApplication extends Application  {
         primaryStage.show();
         primaryStage.setResizable(false);
         primaryStage.setTitle("Shitty Bloons TD 5");
-        //primaryStage.setOnCloseRequest(event -> board.getTimer().cancel());
+        primaryStage.setOnCloseRequest(event -> board.getTimer().cancel());
         //scene.setFill(bg);
 
         scene.addEventHandler(MouseEvent.MOUSE_CLICKED, new Mouse());
 
-        drawMenu();
+        //drawMenu();
 
-        /*drawBoard();
+        drawBoard();
         new AnimationTimer() {
             public void handle(long currentNanoTime) {
                 game();
             }
         }.start();
-        */
+
     }
 
     private void game() {

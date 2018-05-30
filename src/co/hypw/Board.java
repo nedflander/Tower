@@ -50,9 +50,9 @@ public class Board  extends Group {
                         System.out.println(count);
                         Enemy enemy;
                         if(count%2==0) {
-                            enemy = new MyYute(1, 1, 1, 28, 665);
+                            enemy = new MyYute(28, 665);
                         } else {
-                            enemy = new Choch(1, 1, 1, 28, 665);
+                            enemy = new Choch(28, 665);
                         }
                         que.add(enemy);
                     }
