@@ -19,6 +19,7 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -29,7 +30,7 @@ public class GameApplication extends Application  {
     private Group root;
     private Scene scene;
     private Board board;
-    Image stl = null;
+    Image stl;
 
 
     @Override
@@ -43,7 +44,7 @@ public class GameApplication extends Application  {
         primaryStage.show();
         primaryStage.setResizable(false);
         primaryStage.setTitle("Shitty Bloons TD 5");
-
+        primaryStage.setOnCloseRequest(event -> board.getTimer().cancel());
         //scene.setFill(bg);
 
         scene.addEventHandler(MouseEvent.MOUSE_CLICKED, new Mouse());

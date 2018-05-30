@@ -13,6 +13,7 @@ public class Board  extends Group {
 
     int count = 0;
     ArrayList<Enemy> que = new ArrayList<>();
+    private Timer timer;
 
     public Board() {
         generateGrid();
@@ -21,19 +22,17 @@ public class Board  extends Group {
     }
 
     private void makeEnemy() {
-        Timer timer = new Timer();
+        timer = new Timer();
         timer.schedule(
                 new java.util.TimerTask() {
                     public void run() {
                         count++;
-                        //System.out.println(count);
+                        System.out.println(count);
                         Enemy enemy;
                         if(count%2==0) {
-                            System.out.println(count +"y");
                             enemy = new MyYute(1, 1, 1, 28, 665);
                         } else {
                             enemy = new Choch(1, 1, 1, 28, 665);
-                            System.out.println(count);
                         }
                         que.add(enemy);
                     }
@@ -67,11 +66,14 @@ public class Board  extends Group {
     }
 
     public void makeWave() {
-        if(que.size()>1) {
             for(Enemy enemy: que) {
-                this.getChildren().add(que.get(que.indexOf(enemy)));
-                que.clear();
+                this.getChildren().add(enemy);
             }
-        }
+
+        que.clear();
+    }
+
+    public Timer getTimer() {
+        return timer;
     }
 }
