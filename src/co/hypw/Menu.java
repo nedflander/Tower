@@ -14,13 +14,21 @@ import javafx.scene.text.TextAlignment;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 
 
 public class Menu extends Group {
 
-    Image stlImage = null;
+    Image stlImage;
+
+    public static ArrayList<Button> buttons = new ArrayList<>();
 
     public Menu() throws FileNotFoundException {
+        stlImage = new Image(new FileInputStream("stl.png"), 875, 775, true, true);
+        ImagePattern bg = new ImagePattern(stlImage);
+
+        Rectangle rect = new Rectangle(875,775);
+        rect.setFill(bg);
 
         Text title = new Text();
         title.setCache(true);
@@ -29,12 +37,26 @@ public class Menu extends Group {
         title.setFont(Font.font(null, FontWeight.BOLD, 75));
         title.setWrappingWidth(850);
         title.setTextAlignment(TextAlignment.CENTER);
-
+        title.setStroke(Color.BLACK);
+        title.setStrokeWidth(5);
         Reflection r = new Reflection();
         r.setFraction(0.7);
         title.setEffect(r);
-        title.setTranslateY(100);
+        title.setTranslateY(150);
 
-        this.getChildren().addAll(title);
+        Button playButton = generateButton(225, 300, 400,75, "PLAY");
+        Button instructionButton = generateButton(225, 425, 400, 75, "INSTRUCTIONS");
+        Button creditButton = generateButton(225, 550, 400, 75, "CREDITS");
+
+        buttons.add(playButton);
+        buttons.add(instructionButton);
+        buttons.add(creditButton);
+
+        this.getChildren().addAll(rect, title, playButton, instructionButton, creditButton);
+    }
+
+    public Button generateButton(int x, int y, int width, int height, String text) {
+        Button button = new Button(x, y, width, height, text);
+        return button;
     }
 }

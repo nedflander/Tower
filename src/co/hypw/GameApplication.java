@@ -35,8 +35,7 @@ public class GameApplication extends Application  {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        stl = new Image(new FileInputStream("stl.png"), 850, 750, true, true);
-        ImagePattern bg = new ImagePattern(stl);
+
 
         root = new Group();
         scene = new Scene(root, 850, 750);
@@ -44,20 +43,20 @@ public class GameApplication extends Application  {
         primaryStage.show();
         primaryStage.setResizable(false);
         primaryStage.setTitle("Shitty Bloons TD 5");
-        primaryStage.setOnCloseRequest(event -> board.getTimer().cancel());
+        //primaryStage.setOnCloseRequest(event -> board.getTimer().cancel());
         //scene.setFill(bg);
 
         scene.addEventHandler(MouseEvent.MOUSE_CLICKED, new Mouse());
 
-        //drawMenu();
+        drawMenu();
 
-        drawBoard();
+        /*drawBoard();
         new AnimationTimer() {
             public void handle(long currentNanoTime) {
                 game();
             }
         }.start();
-
+        */
     }
 
     private void game() {
@@ -74,69 +73,8 @@ public class GameApplication extends Application  {
     }
 
     public void drawMenu() throws FileNotFoundException {
-        //Menu menu = new Menu();
-        //oot.getChildren().add(menu);
-
-        StackPane playLayout = new StackPane();
-        StackPane instructionLayout = new StackPane();
-        StackPane creditLayout = new StackPane();
-
-
-        //text
-        Text title = new Text();
-        title.setCache(true);
-        title.setText("STL CAF DEFENSE");
-        title.setFill(Color.FORESTGREEN);
-        title.setFont(Font.font(null, FontWeight.BOLD, 75));
-        title.setWrappingWidth(850);
-        title.setTextAlignment(TextAlignment.CENTER);
-        title.setStroke(Color.BLACK);
-        title.setStrokeWidth(5);
-        Reflection r = new Reflection();
-        r.setFraction(0.7);
-        title.setEffect(r);
-        title.setTranslateY(150);
-
-        Text play = new Text("PLAY");
-        play.setFont(Font.font(null,FontWeight.NORMAL, 50));
-        Text instructions = new Text("INSTRUCTIONS");
-        instructions.setFont(Font.font(null,FontWeight.NORMAL, 50));
-        Text credits = new Text("CREDITS");
-        credits.setFont(Font.font(null,FontWeight.NORMAL, 50));
-
-        Rectangle playButton = new Rectangle(400, 75);
-        playButton.setFill(Color.FORESTGREEN);
-        playButton.setStroke(Color.BLACK);
-        playButton.setStrokeWidth(5);
-        Rectangle instructionButton = new Rectangle(400, 75);
-        instructionButton.setFill(Color.FORESTGREEN);
-        instructionButton.setStroke(Color.BLACK);
-        instructionButton.setStrokeWidth(5);
-        Rectangle creditButton = new Rectangle(400, 75);
-        creditButton.setFill(Color.FORESTGREEN);
-        creditButton.setStroke(Color.BLACK);
-        creditButton.setStrokeWidth(5);
-
-        playLayout.getChildren().addAll(playButton, play);
-        playLayout.setLayoutX(225);
-        playLayout.setLayoutY(300);
-        instructionLayout.getChildren().addAll(instructionButton, instructions);
-        instructionLayout.setLayoutX(225);
-        instructionLayout.setLayoutY(425);
-        creditLayout.getChildren().addAll(creditButton, credits);
-        creditLayout.setLayoutX(225);
-        creditLayout.setLayoutY(550);
-
-        root.getChildren().addAll(title, playLayout, instructionLayout, creditLayout);
-
-
-        playButton.setOnMouseEntered(buttonColorChange);
-        instructionButton.setOnMouseEntered(buttonColorChange);
-        creditButton.setOnMouseEntered(buttonColorChange);
-
-        playButton.setOnMouseExited(buttonColorChangeBack);
-        instructionButton.setOnMouseExited(buttonColorChangeBack);
-        creditButton.setOnMouseExited(buttonColorChangeBack);
+        Menu menu = new Menu();
+        root.getChildren().add(menu);
     }
 
     EventHandler buttonColorChange = new EventHandler(){
