@@ -5,7 +5,6 @@ import co.hypw.Enemies.Enemy;
 import co.hypw.Enemies.MyYute;
 import javafx.scene.Group;
 import javafx.scene.image.Image;
-import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 

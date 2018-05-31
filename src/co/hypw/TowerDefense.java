@@ -1,6 +1,5 @@
 package co.hypw;
 
-import javafx.application.Application;
 
 public class TowerDefense {
 
