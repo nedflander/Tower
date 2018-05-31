@@ -29,7 +29,8 @@ public class GameApplication extends Application  {
     public static Rectangle r;
     private Group root;
     private Scene scene;
-    private Board board;
+    Board board;
+    Menu menu;
 
     Image stl;
 
@@ -46,8 +47,9 @@ public class GameApplication extends Application  {
         primaryStage.setTitle("Shitty Bloons TD 5");
         primaryStage.setOnCloseRequest(event -> board.getTimer().cancel());
         //scene.setFill(bg);
-
-        scene.addEventHandler(MouseEvent.MOUSE_CLICKED, new Mouse());
+        Mouse mouse = new Mouse(this);
+        scene.addEventHandler(MouseEvent.MOUSE_CLICKED, mouse);
+        scene.addEventHandler(MouseEvent.MOUSE_MOVED, mouse);
 
         drawMenu();
 
@@ -77,7 +79,7 @@ public class GameApplication extends Application  {
 
 
     public void drawMenu() throws FileNotFoundException {
-        Menu menu = new Menu();
+        menu = new Menu();
         root.getChildren().add(menu);
     }
 
@@ -96,4 +98,8 @@ public class GameApplication extends Application  {
             source.setFill(Color.FORESTGREEN);
         }
     };
+
+    public Group getRoot() {
+        return this.root;
+    }
 }

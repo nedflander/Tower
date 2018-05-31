@@ -13,14 +13,15 @@ import javafx.scene.text.TextAlignment;
 public class Button extends Pane {
     Rectangle r;
     int x, y, width, height;
-    String text;
+    String text, id;
 
-    public Button(int x, int y, int width, int height, String text) {
+    public Button(int x, int y, int width, int height, String text, String id) {
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
         this.text = text;
+        this.id = id;
 
         r = new Rectangle(width, height);
         r.setFill(Color.FORESTGREEN);
@@ -37,5 +38,9 @@ public class Button extends Pane {
         word.setTextAlignment(TextAlignment.CENTER);
 
         this.getChildren().addAll(r, word);
+    }
+
+    public String returnID() {
+        return this.id;
     }
 }

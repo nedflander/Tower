@@ -2,22 +2,36 @@ package co.hypw;
 
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 
 public class Mouse implements EventHandler<MouseEvent> {
 
+    GameApplication app;
+
+    public Mouse(GameApplication app) {
+        this.app = app;
+    }
 
     @Override
     public void handle(MouseEvent event) {
         if(event.getEventType() == MouseEvent.MOUSE_CLICKED) {
-            System.out.println("x");
             for(Button button : Menu.buttons) {
                 if(button.r.intersects(event.getX(),event.getY(), 1, 1)) {
-                    System.out.println("g");
+                    if(button.returnID().equals("play")) {
+                        app.getRoot().getChildren().remove(app.menu);
+                        app.drawBoard();
+                    }
                 }
             }
         }
-        if(event.getEventType() == MouseEvent.MOUSE_MOVED) {
-
+         if(event.getEventType() == MouseEvent.MOUSE_MOVED) {
+            for(Button button : Menu.buttons) {
+                if(button.r.intersects(event.getX(),event.getY(), 1, 1)) {
+                    button.r.setFill(Color.RED);
+                } else {
+                    button.r.setFill(Color.FORESTGREEN);
+                }
+            }
         }
     }
 
