@@ -9,6 +9,7 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.effect.Reflection;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
@@ -31,6 +32,8 @@ public class GameApplication extends Application  {
     private Scene scene;
     Board board;
     Menu menu;
+    AnimationTimer timer;
+    boolean inMenu = true, inGame = false;
 
     Image stl;
 
@@ -48,17 +51,22 @@ public class GameApplication extends Application  {
         primaryStage.setOnCloseRequest(event -> board.getTimer().cancel());
         //scene.setFill(bg);
         Mouse mouse = new Mouse(this);
+        Keyboard keys = new Keyboard(this);
+
         scene.addEventHandler(MouseEvent.MOUSE_CLICKED, mouse);
         scene.addEventHandler(MouseEvent.MOUSE_MOVED, mouse);
+        scene.addEventHandler(KeyEvent.KEY_TYPED, keys);
+
+
+
+
+        board = new Board();
+        menu = new Menu();
 
         drawMenu();
 
-        /*drawBoard();
-        new AnimationTimer() {
-            public void handle(long currentNanoTime) {
-                game();
-            }
-        }.start();*/
+
+
 
     }
 
@@ -71,33 +79,31 @@ public class GameApplication extends Application  {
     }
 
     public void drawBoard() {
-        board = new Board();
+        inGame = true;
         root.getChildren().add(board);
+        new AnimationTimer() {
+            public void handle(long currentNanoTime) {
+                game();
+            }
+        }.start();
 
     }
 
+    public void removeBoard() {
+        inGame = false;
+        root.getChildren().remove(board);
+    }
 
-
-    public void drawMenu() throws FileNotFoundException {
-        menu = new Menu();
+    public void drawMenu() {
+        inMenu = true;
         root.getChildren().add(menu);
     }
 
-    EventHandler buttonColorChange = new EventHandler(){
-        @Override
-        public void handle(Event event) {
-            Rectangle source = (Rectangle) event.getSource();
-            source.setFill(Color.RED);
-        }
-    };
+    public void removeMenu() {
+        inMenu = false;
+        root.getChildren().remove(menu);
+    }
 
-    EventHandler buttonColorChangeBack = new EventHandler() {
-        @Override
-        public void handle(Event event) {
-            Rectangle source = (Rectangle) event.getSource();
-            source.setFill(Color.FORESTGREEN);
-        }
-    };
 
     public Group getRoot() {
         return this.root;

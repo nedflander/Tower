@@ -18,7 +18,7 @@ public class Mouse implements EventHandler<MouseEvent> {
             for(Button button : Menu.buttons) {
                 if(button.r.intersects(event.getX(),event.getY(), 1, 1)) {
                     if(button.returnID().equals("play")) {
-                        app.getRoot().getChildren().remove(app.menu);
+                        app.removeMenu();
                         app.drawBoard();
                     }
                 }
