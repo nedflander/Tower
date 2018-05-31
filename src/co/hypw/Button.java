@@ -1,5 +1,6 @@
 package co.hypw;
 
+import javafx.scene.Group;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -10,7 +11,7 @@ import javafx.scene.text.TextAlignment;
 
 
 public class Button extends Pane {
-
+    Rectangle r;
     int x, y, width, height;
     String text;
 
@@ -21,17 +22,17 @@ public class Button extends Pane {
         this.height = height;
         this.text = text;
 
-        this.setPrefSize(width, height);
-        this.relocate(x, y);
-
-        Rectangle r = new Rectangle(width, height);
+        r = new Rectangle(width, height);
         r.setFill(Color.FORESTGREEN);
         r.setStroke(Color.BLACK);
         r.setStrokeWidth(5);
+        r.setX(x);
+        r.setY(y);
 
         Text word = new Text(text);
         word.setFont(Font.font(null,FontWeight.NORMAL, 50));
-        word.setY(55);
+        word.setY(r.getY()+55);
+        word.setX(r.getX());
         word.setWrappingWidth(width);
         word.setTextAlignment(TextAlignment.CENTER);
 

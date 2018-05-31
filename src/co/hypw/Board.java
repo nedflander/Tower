@@ -24,6 +24,7 @@ public class Board  extends Group {
         generateBackground();
         generateGrid();
         drawGrid();
+        addSide();
         makeEnemy();
     }
 
@@ -91,6 +92,11 @@ public class Board  extends Group {
             }
 
         que.clear();
+    }
+
+    public void addSide() {
+        SideMenu smenu = new SideMenu();
+        getChildren().add(smenu);
     }
 
     public Timer getTimer() {

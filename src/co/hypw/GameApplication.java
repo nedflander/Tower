@@ -30,7 +30,6 @@ public class GameApplication extends Application  {
     private Group root;
     private Scene scene;
     private Board board;
-    private SideMenu sidemenu;
 
     Image stl;
 
@@ -50,14 +49,14 @@ public class GameApplication extends Application  {
 
         scene.addEventHandler(MouseEvent.MOUSE_CLICKED, new Mouse());
 
-        //drawMenu();
+        drawMenu();
 
-        drawBoard();
+        /*drawBoard();
         new AnimationTimer() {
             public void handle(long currentNanoTime) {
                 game();
             }
-        }.start();
+        }.start();*/
 
     }
 

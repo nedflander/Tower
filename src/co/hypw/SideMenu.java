@@ -13,9 +13,8 @@ public class SideMenu extends Pane {
         setLayoutY(45);
         Rectangle square = new Rectangle(160,660,Color.BLUEVIOLET);
         Rectangle menutop = new Rectangle(160,170,Color.HOTPINK);
-        Rectangle menubottom = new Rectangle(0,420,160,300);
 
-        getChildren().addAll(square,menutop,menubottom);
+        getChildren().addAll(square,menutop);
         gen();
 
 

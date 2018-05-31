@@ -9,15 +9,9 @@ public class Mouse implements EventHandler<MouseEvent> {
     @Override
     public void handle(MouseEvent event) {
         if(event.getEventType() == MouseEvent.MOUSE_CLICKED) {
-            System.out.println("ds");
+            System.out.println("x");
             for(Button button : Menu.buttons) {
-                System.out.println(event.getX());
-                System.out.println(event.getY());
-                System.out.println(button.x);
-                System.out.println(button.y);
-                System.out.println(button.width);
-                System.out.println(button.height);
-                if(button.contains(event.getSceneX(), event.getSceneY())) {
+                if(button.r.intersects(event.getX(),event.getY(), 1, 1)) {
                     System.out.println("g");
                 }
             }
