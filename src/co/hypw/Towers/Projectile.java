@@ -1,13 +1,12 @@
 package co.hypw.Towers;
 
 import co.hypw.Enemies.Enemy;
-import co.hypw.GameApplication;
 import javafx.scene.shape.Rectangle;
 
 import java.util.ArrayList;
 
 public class Projectile extends Rectangle {
-    int damage, timeout;
+    int damage, pspeed;
     Weapon weapon;
 
     public Projectile(int damage, Weapon weapon) {
@@ -16,6 +15,9 @@ public class Projectile extends Rectangle {
         weapon.projectileGroup.getChildren().add(this);
         setWidth(15);
         setHeight(10);
+    }
+
+    public void move() {
     }
 
     public void handleDamage() {
