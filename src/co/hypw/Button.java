@@ -25,7 +25,7 @@ public class Button extends Pane {
         this.col = col;
         this.id = id;
 
-
+        //k
         r = new Rectangle(width, height);
         r.setFill(col);
         r.setStroke(Color.BLACK);
