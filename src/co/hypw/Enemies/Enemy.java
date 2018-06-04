@@ -130,4 +130,12 @@ public class Enemy extends Rectangle {
             }
         }
     }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
+    }
 }
