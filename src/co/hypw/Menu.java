@@ -43,9 +43,9 @@ public class Menu extends Group {
         title.setEffect(r);
         title.setTranslateY(150);
 
-        Button playButton = generateButton(225, 300, 400,75, "PLAY", "play");
-        Button instructionButton = generateButton(225, 425, 400, 75, "INSTRUCTIONS", "inst");
-        Button creditButton = generateButton(225, 550, 400, 75, "CREDITS", "credits");
+        Button playButton = generateButton(225, 300, 400,75, 50, Color.FORESTGREEN, "PLAY", "play");
+        Button instructionButton = generateButton(225, 425, 400, 75, 50, Color.FORESTGREEN,"INSTRUCTIONS", "inst");
+        Button creditButton = generateButton(225, 550, 400, 75,50, Color.FORESTGREEN, "CREDITS", "credits");
 
         buttons.add(playButton);
         buttons.add(instructionButton);
@@ -54,8 +54,8 @@ public class Menu extends Group {
         this.getChildren().addAll(rect, title, playButton, instructionButton, creditButton);
     }
 
-    public Button generateButton(int x, int y, int width, int height, String text, String id) {
-        Button button = new Button(x, y, width, height, text, id);
+    public Button generateButton(int x, int y, int width, int height, int fontSize, Color col, String text, String id) {
+        Button button = new Button(x, y, width, height, fontSize, col, text, id);
         return button;
     }
 }

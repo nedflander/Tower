@@ -18,8 +18,9 @@ public class GameApplication extends Application  {
     private Scene scene;
     Board board;
     Menu menu;
+    Credits credit;
     AnimationTimer timer;
-    boolean inMenu = true, inGame = false;
+    boolean inMenu = true, inGame = false, inCredits = false;
 
     Image stl;
 
@@ -48,6 +49,7 @@ public class GameApplication extends Application  {
 
         board = new Board();
         menu = new Menu();
+        credit = new Credits();
 
         drawMenu();
 
@@ -88,6 +90,16 @@ public class GameApplication extends Application  {
     public void removeMenu() {
         inMenu = false;
         root.getChildren().remove(menu);
+    }
+
+    public void drawCredits() {
+        inCredits = true;
+        root.getChildren().add(credit);
+    }
+
+    public void removeCredits() {
+        inCredits = false;
+        root.getChildren().remove(credit);
     }
 
 
