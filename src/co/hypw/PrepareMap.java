@@ -2,7 +2,7 @@ package co.hypw;
 
 public class PrepareMap {
     private Character[][] map;
-    private Character[][] path;
+    private int[][] path;
 
     public PrepareMap() {
         map = new Character[][]{{'e','g','g','g','g','g','s','b','b','b','b','b'},
@@ -29,7 +29,7 @@ public class PrepareMap {
                             {14, 13, 12, 11, 10, 9, 0, 0, 0, 0, 0, 0},
                             {0, 0, 0, 0, 0, 8, 0, 0, 0, 0, 0, 0},
                             {2, 3, 4, 5, 6, 7, 0, 0, 0, 0, 0, 0},
-                            {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                            {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}};
         setTypes();
     }
 
