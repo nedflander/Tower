@@ -52,7 +52,6 @@ public class Enemy extends Rectangle {
 
     public void move() {
         tileInteract();
-        System.out.println(speed);
         switch(dir) {
             case NORTH:
                 this.y -=speed;

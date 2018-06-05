@@ -20,7 +20,7 @@ public class GameApplication extends Application  {
     Menu menu;
     Credits credit;
     AnimationTimer timer;
-    boolean inMenu = true, inGame = false, inCredits = false;
+    public boolean inMenu = true, inGame = false, inCredits = false;
 
     Image stl;
 
