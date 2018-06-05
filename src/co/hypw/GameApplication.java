@@ -69,11 +69,12 @@ public class GameApplication extends Application  {
     public void drawBoard() {
         inGame = true;
         root.getChildren().add(board);
-        new AnimationTimer() {
+        AnimationTimer exd = new AnimationTimer() {
             public void handle(long currentNanoTime) {
                 game();
             }
-        }.start();
+        };
+        exd.start();
 
     }
 

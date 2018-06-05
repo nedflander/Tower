@@ -8,9 +8,11 @@ import java.util.ArrayList;
 public class Projectile extends Rectangle {
     int damage, pspeed;
     Weapon weapon;
+    Enemy target;
 
-    public Projectile(int damage, Weapon weapon) {
+    public Projectile(int damage, Weapon weapon, Enemy target) {
         this.weapon = weapon;
+        this.target = target;
         weapon.projectiles.add(this);
         weapon.projectileGroup.getChildren().add(this);
         setWidth(15);

@@ -1,5 +1,6 @@
 package co.hypw.Towers;
 
+import co.hypw.Enemies.Enemy;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -19,16 +20,33 @@ public class Weapon {
     }
 
     public void shoot() {
-        getRange();
-        new Projectile(damage, this);
+        ArrayList<Enemy> inBounds = new ArrayList<>();
+        Enemy target = null;
+        for(Enemy enemy: Enemy.enemies) {
+            if(enemy.intersects(tower.bounds.getLayoutBounds())){
+                inBounds.add(enemy);
+            }
+        }
+        double curr = 0;
+        for(Enemy enemy: inBounds) {
+            double dx = enemy.getX()-tower.getX();
+            double dy = enemy.getY()-tower.getY();
+            double distance = Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
+            if(curr == 0) {
+                curr = distance;
+                target = enemy;
+            } else if(curr > distance) {
+                curr = distance;
+                target = enemy;
+            }
+        }
+
+        if(target!=null) {
+            new Projectile(damage, this, target);
+        }
+
         for(Projectile projectile : projectiles) {
             projectile.handleDamage();
         }
-    }
-
-    private void getRange() {
-        Circle range = new Circle(tower.getX()+28, tower.getY()+28, radius, Color.BLACK);
-
-
     }
 }
