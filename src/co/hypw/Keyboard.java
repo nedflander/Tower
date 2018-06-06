@@ -13,10 +13,8 @@ public class Keyboard implements EventHandler<KeyEvent> {
 
     @Override
     public void handle(KeyEvent event) {
-        System.out.println("g");
-        if(event.getEventType() == KeyEvent.KEY_TYPED) {
+        if(event.getEventType() == KeyEvent.KEY_PRESSED) {
             if(event.getCode() == KeyCode.ESCAPE) {
-                System.out.println("x");
                 if(app.inGame) {
                     app.removeBoard();
                     app.drawMenu();

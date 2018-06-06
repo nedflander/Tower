@@ -48,6 +48,7 @@ public class GameApplication extends Application  {
         scene.addEventHandler(MouseEvent.MOUSE_CLICKED, mouse);
         scene.addEventHandler(MouseEvent.MOUSE_MOVED, mouse);
         scene.addEventHandler(KeyEvent.KEY_TYPED, keys);
+        scene.addEventHandler(KeyEvent.KEY_PRESSED, keys);
 
 
 

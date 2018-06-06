@@ -86,7 +86,8 @@ public class Enemy extends Rectangle {
         WASTEMAN,
         NERD,
         CHOCH,
-        MYYUTE
+        MYYUTE,
+        SECOND
     }
 
     public Direction getDir() {
