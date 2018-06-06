@@ -40,8 +40,20 @@ public class Button extends Pane {
         word.setWrappingWidth(width);
         word.setTextAlignment(TextAlignment.CENTER);
 
-        this.getChildren().addAll(r, word);
+        this.getChildren().addAll(r,word);
     }
+public void setColor()
+{
+
+}
+public void setStroke()
+{
+
+}
+public void setTectY()
+{
+
+}
 
     public String returnID() {
         return this.id;

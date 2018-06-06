@@ -17,6 +17,8 @@ public class Mouse implements EventHandler<MouseEvent> {
     @Override
     public void handle(MouseEvent event) {
         if(event.getEventType() == MouseEvent.MOUSE_CLICKED) {
+
+
             if(app.inMenu) {
                 for (Button button : Menu.buttons) {
                     if (button.r.intersects(event.getX(), event.getY(), 1, 1)) {
@@ -30,6 +32,8 @@ public class Mouse implements EventHandler<MouseEvent> {
                         }
                     }
                 }
+            }
+            if(app.inCredits) {
                 for (Button button : Credits.buttons) {
                     if (button.r.intersects(event.getX(), event.getY(), 1, 1)) {
                         if (button.returnID().equals("back")) {
@@ -37,6 +41,7 @@ public class Mouse implements EventHandler<MouseEvent> {
                             app.drawMenu();
                         }
                     }
+
                 }
             }
             if(app.inGame) {

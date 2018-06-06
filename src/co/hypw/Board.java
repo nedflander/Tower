@@ -28,6 +28,7 @@ public class Board  extends Group {
         drawGrid();
         addSide();
         makeEnemy();
+
     }
 
     private void generateBackground() {
