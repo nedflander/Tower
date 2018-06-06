@@ -1,5 +1,6 @@
 package co.hypw.Towers;
 
+import co.hypw.GameApplication;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
@@ -10,7 +11,7 @@ import java.io.FileInputStream;
 import java.util.ArrayList;
 
 public class Tower extends Rectangle {
-    Weapon weapon;
+    public Weapon weapon;
     int points, cost, health, x, y;
     Type type;
     Image image;
@@ -46,7 +47,7 @@ public class Tower extends Rectangle {
             switch (type) {
                 case FIRST:
                     image = new Image(new FileInputStream("tower.png"), 850, 750, true, true);
-                    weapon = new Weapon(2, 10, this);
+                    weapon = new Weapon(2, 1, this);
                     bounds = new Circle(this.getX()+25, this.getY()+25, 80, Color.TRANSPARENT);
                     bounds.setStroke(Color.BLACK);
                     this.cost = 20;

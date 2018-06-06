@@ -28,9 +28,6 @@ public class Board  extends Group {
         drawGrid();
         addSide();
         makeEnemy();
-        //Tower tower = new Tower(Tower.Type.FIRST, 70 , 70);
-        //getChildren().add(tower);
-        //getChildren().add(tower.bounds);
     }
 
     private void generateBackground() {
@@ -53,7 +50,6 @@ public class Board  extends Group {
                 new java.util.TimerTask() {
                     public void run() {
                         count++;
-                        System.out.println(count);
                         Enemy enemy;
                         if(count%2==0) {
                             enemy = new MyYute(28, 665);

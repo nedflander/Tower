@@ -67,9 +67,7 @@ public class Mouse implements EventHandler<MouseEvent> {
                 if(tile.intersects(x, y, 1, 1)) {
                     if(Tower.towers.size() != 0) {
                         for (Tower tower : Tower.towers) {
-                            System.out.println("l");
                             if (tower.intersects(x, y, 50, 50)) {
-                                System.out.println("j");
                                 return;
                             }
                         }
@@ -77,6 +75,7 @@ public class Mouse implements EventHandler<MouseEvent> {
                     Tower newtower = new Tower(Tower.Type.FIRST, x, y);
                     app.board.getChildren().add(newtower);
                     app.board.getChildren().add(newtower.bounds);
+                    app.board.getChildren().add(newtower.weapon.projectileGroup);
                 }
             }
         }

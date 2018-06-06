@@ -1,6 +1,8 @@
 package co.hypw;
 
 import co.hypw.Enemies.Enemy;
+import co.hypw.Towers.Projectile;
+import co.hypw.Towers.Tower;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Group;
@@ -11,16 +13,19 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
+
 public class GameApplication extends Application  {
 
     public static Rectangle r;
     private Group root;
     private Scene scene;
-    Board board;
+    public Board board;
     Menu menu;
     Credits credit;
     AnimationTimer timer;
     public boolean inMenu = true, inGame = false, inCredits = false;
+    int count = 0;
 
     Image stl;
 
@@ -59,9 +64,23 @@ public class GameApplication extends Application  {
     }
 
     private void game() {
+        count++;
         board.makeWave();
         for(Enemy enemy: Enemy.enemies) {
             enemy.move();
+        }
+        for(Tower tower : Tower.towers) {
+            if(count%60==0) {
+                tower.shoot();
+            }
+            for(Projectile projectile: tower.weapon.projectiles) {
+                if(projectile.hit) {
+                    for(Enemy enemy: projectile.dead) {
+                        board.getChildren().remove(enemy);
+                        Enemy.enemies.remove(enemy);
+                    }
+                }
+            }
         }
 
     }

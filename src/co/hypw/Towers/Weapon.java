@@ -8,10 +8,10 @@ import javafx.scene.shape.Circle;
 import java.util.ArrayList;
 
 public class Weapon {
-    ArrayList<Projectile> projectiles = new ArrayList<>();
+    public ArrayList<Projectile> projectiles = new ArrayList<>();
     public Group projectileGroup = new Group();
     private int radius, level, damage;
-    private Tower tower;
+    public Tower tower;
 
     public Weapon(int range, int damage, Tower tower) {
         this.radius = range;
@@ -27,6 +27,7 @@ public class Weapon {
                 inBounds.add(enemy);
             }
         }
+
         double curr = 0;
         for(Enemy enemy: inBounds) {
             double dx = enemy.getX()-tower.getX();
@@ -42,11 +43,9 @@ public class Weapon {
         }
 
         if(target!=null) {
-            new Projectile(damage, this, target);
+            new Projectile(damage, this, target).move();
         }
 
-        for(Projectile projectile : projectiles) {
-            projectile.handleDamage();
-        }
+
     }
 }
