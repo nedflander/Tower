@@ -53,6 +53,9 @@ public class Tower extends Rectangle {
                     image = new Image(new FileInputStream("tower.png"), 850, 750, true, true);
 
                     break;
+                case SNIPER:
+                    image = new Image(new FileInputStream("sniper.png"), 850, 750, true, true);
+                    break;
             }
             ImagePattern bg = new ImagePattern(image);
             this.setFill(bg);
