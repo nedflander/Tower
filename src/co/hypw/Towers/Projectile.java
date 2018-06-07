@@ -2,10 +2,14 @@ package co.hypw.Towers;
 
 import co.hypw.Enemies.Enemy;
 import javafx.animation.TranslateTransition;
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public class Projectile extends Rectangle {
@@ -14,6 +18,8 @@ public class Projectile extends Rectangle {
     Enemy target;
     public ArrayList<Enemy> dead = new ArrayList<>();
     public boolean hit;
+    Image eraser;
+
 
     public Projectile(int damage, Weapon weapon, Enemy target) {
         this.weapon = weapon;
@@ -21,10 +27,15 @@ public class Projectile extends Rectangle {
         this.damage = damage;
         weapon.projectiles.add(this);
         weapon.projectileGroup.getChildren().add(this);
-        setFill(Color.BLACK);
+
         move();
         setWidth(15);
         setHeight(10);
+        try {
+            eraser = new Image(new FileInputStream("Eraser.png"), 15, 10, true, true);
+        } catch (Exception e) { }
+        ImagePattern eraserIP = new ImagePattern(eraser);
+        setFill(eraserIP);
     }
 
     public void move() {
