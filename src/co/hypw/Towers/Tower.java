@@ -9,6 +9,7 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public class Tower extends Rectangle {

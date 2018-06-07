@@ -5,6 +5,7 @@ import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public class Weapon {
@@ -19,7 +20,7 @@ public class Weapon {
         this.tower = tower;
     }
 
-    public void shoot() {
+    public void shoot(){
         ArrayList<Enemy> inBounds = new ArrayList<>();
         Enemy target = null;
         for(Enemy enemy: Enemy.enemies) {
