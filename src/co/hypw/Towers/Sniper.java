@@ -3,11 +3,12 @@ package co.hypw.Towers;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
-public class First extends Tower {
-    public First(int x, int y) {
+public class Sniper extends Tower {
 
-        super(Type.FIRST, x, y, 45);
-        int radius = 80;
+    public Sniper(int x, int y) {
+
+        super(Tower.Type.SNIPER, x, y, 45);
+        int radius = 400;
         this.cost = 20;
 
         weapon = new Weapon(2, this);

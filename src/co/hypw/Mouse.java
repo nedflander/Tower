@@ -1,6 +1,7 @@
 package co.hypw;
 
 import co.hypw.Towers.First;
+import co.hypw.Towers.Sniper;
 import co.hypw.Towers.Tower;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -78,7 +79,8 @@ public class Mouse implements EventHandler<MouseEvent> {
                             }
                         }
                     }
-                    First newtower = new First(x, y);
+                    Sniper newtower = new Sniper(x, y);
+                    //First newtower = new First(x, y);
                     app.board.getChildren().add(newtower.getGroup());
                 }
             }

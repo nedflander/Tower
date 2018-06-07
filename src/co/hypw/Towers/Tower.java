@@ -14,13 +14,14 @@ import java.util.ArrayList;
 
 public class Tower extends Rectangle {
     public Weapon weapon;
-    int points, cost, health, x, y;
+    int points, cost, health, x, y, frequency;
     Type type;
     Image image;
     public Circle bounds;
     public static ArrayList<Tower> towers = new ArrayList<>();
 
-    public Tower(Type type, int x, int y) {
+    public Tower(Type type, int x, int y, int frequency) {
+        this.frequency = frequency;
         this.type = type;
         this.x = x;
         this.y = y;
@@ -41,7 +42,8 @@ public class Tower extends Rectangle {
     }
 
     public enum Type {
-        FIRST
+        FIRST,
+        SNIPER
     }
 
     private void setProperties() {

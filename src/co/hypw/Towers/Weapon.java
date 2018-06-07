@@ -11,11 +11,10 @@ import java.util.ArrayList;
 public class Weapon {
     public ArrayList<Projectile> projectiles = new ArrayList<>();
     public Group projectileGroup = new Group();
-    private int radius, level, damage;
+    private int damage;
     public Tower tower;
 
-    public Weapon(int range, int damage, Tower tower) {
-        this.radius = range;
+    public Weapon(int damage, Tower tower) {
         this.damage = damage;
         this.tower = tower;
     }
@@ -24,7 +23,7 @@ public class Weapon {
         ArrayList<Enemy> inBounds = new ArrayList<>();
         Enemy target = null;
         for(Enemy enemy: Enemy.enemies) {
-            if(enemy.intersects(tower.bounds.getLayoutBounds())){
+            if(tower.bounds.contains(enemy.getX(), enemy.getY())) {
                 inBounds.add(enemy);
             }
         }
