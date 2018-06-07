@@ -71,7 +71,7 @@ public class GameApplication extends Application  {
             enemy.move();
         }
         for(Tower tower : Tower.towers) {
-            if(count%60==0) {
+            if(count%45==0) {
                 tower.shoot();
             }
             for(Projectile projectile: tower.weapon.projectiles) {

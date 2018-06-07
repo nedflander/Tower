@@ -1,6 +1,7 @@
 package co.hypw.Towers;
 
 import co.hypw.GameApplication;
+import javafx.scene.Group;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
@@ -47,10 +48,6 @@ public class Tower extends Rectangle {
             switch (type) {
                 case FIRST:
                     image = new Image(new FileInputStream("tower.png"), 850, 750, true, true);
-                    weapon = new Weapon(2, 1, this);
-                    bounds = new Circle(this.getX()+25, this.getY()+25, 80, Color.TRANSPARENT);
-                    bounds.setStroke(Color.BLACK);
-                    this.cost = 20;
 
                     break;
             }
@@ -59,6 +56,12 @@ public class Tower extends Rectangle {
         } catch(Exception e) {
             System.out.println(e);
         }
+    }
+
+    public Group getGroup() {
+        Group group = new Group();
+        group.getChildren().addAll(this, bounds, weapon.projectileGroup);
+        return group;
     }
 
 }

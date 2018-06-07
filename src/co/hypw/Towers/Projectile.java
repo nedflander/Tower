@@ -30,10 +30,10 @@ public class Projectile extends Rectangle {
     public void move() {
         TranslateTransition x = new TranslateTransition(Duration.seconds(0.2));
         x.setNode(this);
-        x.setFromX(weapon.tower.x+20);
-        x.setFromY(weapon.tower.y+20);
-        x.setToX(target.getX());
-        x.setToY(target.getY());
+        x.setFromX(weapon.tower.x);
+        x.setFromY(weapon.tower.y);
+        x.setToX(target.getX()+20);
+        x.setToY(target.getY()+20);
         x.setOnFinished(event -> { setX(getTranslateX()-getX());
         setY(getTranslateY() - getY()); handleDamage(); weapon.projectileGroup.getChildren().remove(this);
         });
@@ -43,7 +43,6 @@ public class Projectile extends Rectangle {
     }
 
     public boolean handleDamage() {
-        System.out.println(this.getX());
         for(Enemy enemy : Enemy.enemies) {
             if(enemy.intersects(this.getLayoutBounds())) {
                 hit=true;
