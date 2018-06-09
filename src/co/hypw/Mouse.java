@@ -47,7 +47,7 @@ public class Mouse implements EventHandler<MouseEvent> {
                 }
             }
             if(app.inGame) {
-                placeMonkey((int)event.getX() - 20, (int)event.getY() - 20);
+                placeMonkey((int)event.getX(), (int)event.getY());
             }
         }
          if(event.getEventType() == MouseEvent.MOUSE_MOVED) {
@@ -65,6 +65,18 @@ public class Mouse implements EventHandler<MouseEvent> {
                     button.r.setFill(Color.FORESTGREEN);
                 }
             }
+
+            if(app.inGame) {
+                for(Tile tile : Tile.tiles) {
+                    if(tile.contains(event.getX(), event.getY())) {
+                        if (tile.getType() == Tile.Type.ENEMY) {
+                            tile.setStroke(Color.YELLOW);
+                        }
+                    } else {
+                        tile.setStroke(Color.TRANSPARENT);
+                    }
+                }
+            }
         }
     }
 
@@ -79,7 +91,7 @@ public class Mouse implements EventHandler<MouseEvent> {
                             }
                         }
                     }
-                    Sniper newtower = new Sniper(x, y);
+                    Sniper newtower = new Sniper((int)tile.getX(), (int)tile.getY());
                     //First newtower = new First(x, y);
                     app.board.getChildren().add(newtower.getGroup());
                 }
