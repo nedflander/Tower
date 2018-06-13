@@ -3,8 +3,8 @@ package co.hypw.Towers;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
-public class First extends Tower {
-    public First(int x, int y) {
+public class Guy extends Tower {
+    public Guy(int x, int y) {
 
         super(Type.FIRST, x, y, 45);
         int radius = 80;

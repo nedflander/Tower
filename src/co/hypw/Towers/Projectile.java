@@ -57,10 +57,8 @@ public class Projectile extends Rectangle {
         for(Enemy enemy : Enemy.enemies) {
             if(enemy.intersects(this.getLayoutBounds())) {
                 hit=true;
-                System.out.println("s");
                 enemy.setHealth(enemy.getHealth()-damage);
                 if(enemy.getHealth()<=0) {
-                    System.out.println("f");
                     dead.add(enemy);
                 }
                 return true;

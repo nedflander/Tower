@@ -15,17 +15,19 @@ public class Enemy extends Rectangle {
     private int x, y, width = 40, height = 40;
     private Type type;
     private Image image;
+    private int points;
 
     private Direction dir = Direction.NORTH;
     public static ArrayList<Enemy> enemies = new ArrayList<>();
 
-    public Enemy(int health, double speed, int damage, Type type, int x, int y) {
+    public Enemy(int health, double speed, int damage, int points, Type type, int x, int y) {
         this.health = health;
         this.speed = speed;
         this.damage = damage;
         this.x = x;
         this.y = y;
         this.type = type;
+        this.points = points;
         setX(x);
         setY(y);
         setWidth(width);
@@ -139,4 +141,9 @@ public class Enemy extends Rectangle {
     public void setHealth(int health) {
         this.health = health;
     }
+
+    public int getPoints() {
+        return points;
+    }
+
 }

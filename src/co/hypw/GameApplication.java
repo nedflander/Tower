@@ -26,6 +26,7 @@ public class GameApplication extends Application  {
     Instructions instructions;
     AnimationTimer timer;
     public boolean inMenu = true, inGame = false, inCredits = false, inInstuctions = false, inSideMenu = false;
+    private int points = 0;
     int count = 0;
 
     Image stl;
@@ -79,13 +80,14 @@ public class GameApplication extends Application  {
             for(Projectile projectile: tower.weapon.projectiles) {
                 if(projectile.hit) {
                     for(Enemy enemy: projectile.dead) {
+                        points += enemy.getPoints();
                         board.getChildren().remove(enemy);
                         Enemy.enemies.remove(enemy);
                     }
                 }
+                projectile.dead.clear();
             }
         }
-
     }
 
     public void drawBoard() {

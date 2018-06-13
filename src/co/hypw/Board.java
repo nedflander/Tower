@@ -6,10 +6,8 @@ import co.hypw.Enemies.MyYute;
 import co.hypw.Towers.Tower;
 import javafx.scene.Group;
 import javafx.scene.image.Image;
-import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
-import org.w3c.dom.css.Rect;
 
 import java.io.FileInputStream;
 import java.util.ArrayList;
@@ -21,6 +19,7 @@ public class Board  extends Group {
     ArrayList<Enemy> que = new ArrayList<>();
     private Timer timer;
     Image map;
+    public SideMenu smenu;
 
     public Board() {
         generateBackground();
@@ -97,7 +96,7 @@ public class Board  extends Group {
     }
 
     public void addSide() {
-        SideMenu smenu = new SideMenu();
+        smenu = new SideMenu();
         getChildren().add(smenu);
     }
 

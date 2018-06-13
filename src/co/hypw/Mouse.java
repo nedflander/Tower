@@ -1,9 +1,8 @@
 package co.hypw;
 
-import co.hypw.Towers.First;
+import co.hypw.Towers.Guy;
 import co.hypw.Towers.Sniper;
 import co.hypw.Towers.Tower;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
@@ -138,14 +137,23 @@ public class Mouse implements EventHandler<MouseEvent> {
                 if(tile.intersects(x, y, 1, 1)) {
                     if(Tower.towers.size() != 0) {
                         for (Tower tower : Tower.towers) {
-                            if (tower.intersects(x, y, 50, 50)) {
+                            if (tower.intersects(x, y, 30, 30)) {
                                 return;
                             }
                         }
                     }
-                    Sniper newtower = new Sniper((int)tile.getX(), (int)tile.getY());
-                    //First newtower = new First(x, y);
-                    app.board.getChildren().add(newtower.getGroup());
+                    switch (app.board.smenu.getSelected()) {
+                        case GUY:
+                            Guy newtower = new Guy((int)(tile.getX()+5), ((int)tile.getY())+5);
+                            app.board.getChildren().add(newtower.getGroup());
+                            break;
+                        case SNIPER:
+                            Sniper newtower2 = new Sniper((int)(tile.getX()), ((int)tile.getY()));
+                            app.board.getChildren().add(newtower2.getGroup());
+                            app.board.getChildren().get(app.board.getChildren().indexOf(newtower2.bounds)).toBack();
+
+                            break;
+                    }
                 }
             }
         }
