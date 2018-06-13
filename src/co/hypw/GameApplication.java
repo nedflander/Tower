@@ -23,8 +23,9 @@ public class GameApplication extends Application  {
     public Board board;
     Menu menu;
     Credits credit;
+    Instructions instructions;
     AnimationTimer timer;
-    public boolean inMenu = true, inGame = false, inCredits = false;
+    public boolean inMenu = true, inGame = false, inCredits = false, inInstuctions = false, inSideMenu = false;
     int count = 0;
 
     Image stl;
@@ -56,6 +57,7 @@ public class GameApplication extends Application  {
         board = new Board();
         menu = new Menu();
         credit = new Credits();
+        instructions = new Instructions();
 
         drawMenu();
 
@@ -88,6 +90,7 @@ public class GameApplication extends Application  {
 
     public void drawBoard() {
         inGame = true;
+        inSideMenu = true;
         root.getChildren().add(board);
         AnimationTimer exd = new AnimationTimer() {
             public void handle(long currentNanoTime) {
@@ -100,6 +103,7 @@ public class GameApplication extends Application  {
 
     public void removeBoard() {
         inGame = false;
+        inSideMenu = false;
         root.getChildren().remove(board);
     }
 
@@ -123,6 +127,15 @@ public class GameApplication extends Application  {
         root.getChildren().remove(credit);
     }
 
+    public void removeInstructions() {
+        inInstuctions = false;
+        root.getChildren().remove(instructions);
+    }
+
+    public void drawInstructions() {
+        inInstuctions = true;
+        root.getChildren().add(instructions);
+    }
 
     public Group getRoot() {
         return this.root;

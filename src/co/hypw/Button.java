@@ -35,7 +35,8 @@ public class Button extends Pane {
 
         Text word = new Text(text);
         word.setFont(Font.font(null,FontWeight.NORMAL, fontSize));
-        word.setY(r.getY()+55);
+        word.setTextAlignment(TextAlignment.JUSTIFY);
+        word.setY(r.getY()+ fontSize + 5);
         word.setX(r.getX());
         word.setWrappingWidth(width);
         word.setTextAlignment(TextAlignment.CENTER);

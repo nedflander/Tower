@@ -32,6 +32,10 @@ public class Mouse implements EventHandler<MouseEvent> {
                             app.removeMenu();
                             app.drawCredits();
                         }
+                        if (button.returnID().equals("inst")) {
+                            app.removeMenu();
+                            app.drawInstructions();
+                        }
                     }
                 }
             }
@@ -48,6 +52,28 @@ public class Mouse implements EventHandler<MouseEvent> {
             }
             if(app.inGame) {
                 placeMonkey((int)event.getX(), (int)event.getY());
+            }
+
+            if(app.inSideMenu) {
+                for (Button button : SideMenu.buttons) {
+                    if (button.r.intersects(event.getX() - 685, event.getY()-45, 1, 1)) {
+                        if (button.returnID().equals("menu")) {
+                            app.removeBoard();
+                            app.drawMenu();
+                        }
+                    }
+                }
+            }
+
+            if (app.inInstuctions) {
+                for (Button button : Instructions.buttons) {
+                    if (button.r.intersects(event.getX(), event.getY(), 1, 1)) {
+                        if (button.returnID().equals("back")) {
+                            app.removeInstructions();
+                            app.drawMenu();
+                        }
+                    }
+                }
             }
         }
          if(event.getEventType() == MouseEvent.MOUSE_MOVED) {
@@ -66,6 +92,14 @@ public class Mouse implements EventHandler<MouseEvent> {
                 }
             }
 
+            for (Button button : SideMenu.buttons) {
+                if (button.r.intersects(event.getX(), event.getY(), 1, 1)) {
+                    button.r.setFill(Color.RED);
+                } else {
+                    button.r.setFill(Color.FORESTGREEN);
+                }
+            }
+
             if(app.inGame) {
                 for(Tile tile : Tile.tiles) {
                     if(tile.contains(event.getX(), event.getY())) {
@@ -77,6 +111,24 @@ public class Mouse implements EventHandler<MouseEvent> {
                     }
                 }
             }
+             if (app.inInstuctions) {
+                 for (Button button : Instructions.buttons) {
+                     if (button.r.intersects(event.getX(), event.getY(), 1, 1)) {
+                         button.r.setFill(Color.RED);
+                     } else {
+                         button.r.setFill(Color.FORESTGREEN);
+                     }
+                 }
+             }
+             if(app.inSideMenu) {
+                 for (Button button : SideMenu.buttons) {
+                     if (button.r.intersects(event.getX() - 685, event.getY()-45, 1, 1)) {
+                         button.r.setFill(Color.RED);
+                     } else {
+                         button.r.setFill(Color.FORESTGREEN);
+                     }
+                 }
+             }
         }
     }
 

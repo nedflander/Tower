@@ -14,4 +14,6 @@ public class First extends Tower {
         bounds = new Circle(this.getX()+25, this.getY()+25, radius, Color.TRANSPARENT);
         bounds.setStroke(Color.BLACK);
     }
+
+
 }
