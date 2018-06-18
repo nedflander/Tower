@@ -26,7 +26,7 @@ public class GameApplication extends Application  {
     Instructions instructions;
     AnimationTimer timer;
     public boolean inMenu = true, inGame = false, inCredits = false, inInstuctions = false, inSideMenu = false;
-    private int points = 0;
+    private int points = 0, health = 50;
     int count = 0;
 
     Image stl;
@@ -137,6 +137,22 @@ public class GameApplication extends Application  {
     public void drawInstructions() {
         inInstuctions = true;
         root.getChildren().add(instructions);
+    }
+
+    public int getPoints() {
+        return points;
+    }
+
+    public void setPoints(int points) {
+        this.points = points;
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
     }
 
     public Group getRoot() {
