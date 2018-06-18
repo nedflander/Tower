@@ -144,14 +144,19 @@ public class Mouse implements EventHandler<MouseEvent> {
                     }
                     switch (app.board.smenu.getSelected()) {
                         case GUY:
-
-                            Guy newtower = new Guy((int)(tile.getX()+5), ((int)tile.getY())+5);
-                            app.board.getChildren().add(newtower.getGroup());
+                            if(app.getPoints() >= 25) {
+                                app.setPoints(app.getPoints()-25);
+                                Guy newtower = new Guy((int) (tile.getX() + 5), ((int) tile.getY()) + 5);
+                                app.board.getChildren().add(newtower.getGroup());
+                            }
                             break;
                         case SNIPER:
-                            Sniper newtower2 = new Sniper((int)(tile.getX()), ((int)tile.getY()));
-                            app.board.getChildren().add(newtower2.getGroup());
-                            app.board.smenu.toFront();
+                            if(app.getPoints() >= 100) {
+                                app.setPoints(app.getPoints() - 100);
+                                Sniper newtower2 = new Sniper((int) (tile.getX()), ((int) tile.getY()));
+                                app.board.getChildren().add(newtower2.getGroup());
+                                app.board.smenu.toFront();
+                            }
                             break;
                     }
                 }
