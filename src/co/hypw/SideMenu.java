@@ -27,7 +27,7 @@ public class SideMenu extends Pane {
 
 
     public SideMenu() {
-
+    //k
 
         setLayoutX(685);
         setLayoutY(45);
