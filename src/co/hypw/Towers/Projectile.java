@@ -39,7 +39,7 @@ public class Projectile extends Rectangle {
     }
 
     public void move() {
-        TranslateTransition x = new TranslateTransition(Duration.seconds(0.2));
+        TranslateTransition x = new TranslateTransition(Duration.seconds(0.1));
         x.setNode(this);
         x.setFromX(weapon.tower.x);
         x.setFromY(weapon.tower.y);

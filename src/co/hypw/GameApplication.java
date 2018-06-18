@@ -10,7 +10,11 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
@@ -26,7 +30,7 @@ public class GameApplication extends Application  {
     Instructions instructions;
     AnimationTimer timer;
     public boolean inMenu = true, inGame = false, inCredits = false, inInstuctions = false, inSideMenu = false;
-    private int points = 0, health = 50;
+    public static int points = 50, health = 50;
     int count = 0;
 
     Image stl;
@@ -42,7 +46,7 @@ public class GameApplication extends Application  {
         primaryStage.show();
         primaryStage.setResizable(false);
         primaryStage.setTitle("Shitty Bloons TD 5");
-        primaryStage.setOnCloseRequest(event -> board.getTimer().cancel());
+        primaryStage.setOnCloseRequest(event -> onClose());
         //scene.setFill(bg);
         Mouse mouse = new Mouse(this);
         Keyboard keys = new Keyboard(this);
@@ -66,13 +70,25 @@ public class GameApplication extends Application  {
 
 
     }
+    public void onClose() {
+        board.getTimer().cancel();
+        System.exit(1);
+    }
 
     private void game() {
         count++;
         board.makeWave();
+        ArrayList<Enemy> toRemove = new ArrayList<>();
         for(Enemy enemy: Enemy.enemies) {
             enemy.move();
+            if(enemy.intersects(Tile.getTileWithId(143).getLayoutBounds())) {
+                health-=enemy.getDamage();
+                board.getChildren().remove(enemy);
+                toRemove.add(enemy);
+                board.smenu.update();
+            }
         }
+        Enemy.enemies.removeAll(toRemove);
         for(Tower tower : Tower.towers) {
             if(count%45==0) {
                 tower.shoot();
@@ -83,6 +99,7 @@ public class GameApplication extends Application  {
                         points += enemy.getPoints();
                         board.getChildren().remove(enemy);
                         Enemy.enemies.remove(enemy);
+                        board.smenu.update();
                     }
                 }
                 projectile.dead.clear();
@@ -97,6 +114,11 @@ public class GameApplication extends Application  {
         AnimationTimer exd = new AnimationTimer() {
             public void handle(long currentNanoTime) {
                 game();
+                if (health == 0) {
+                    gameOver();
+                    stop();
+
+                }
             }
         };
         exd.start();
@@ -139,23 +161,19 @@ public class GameApplication extends Application  {
         root.getChildren().add(instructions);
     }
 
-    public int getPoints() {
-        return points;
-    }
-
-    public void setPoints(int points) {
-        this.points = points;
-    }
-
-    public int getHealth() {
-        return health;
-    }
-
-    public void setHealth(int health) {
-        this.health = health;
-    }
-
     public Group getRoot() {
         return this.root;
+    }
+
+    public void gameOver() {
+        Text over = new Text();
+        over.setFont(Font.font(null, 100));
+        over.setText("GAME OVER !");
+        over.setWrappingWidth(850);
+        over.setTextAlignment(TextAlignment.CENTER);
+        over.setY(300);
+        over.setFill(Color.RED);
+        root.getChildren().remove(board);
+        root.getChildren().add(over);
     }
 }

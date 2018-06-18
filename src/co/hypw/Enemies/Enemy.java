@@ -146,4 +146,11 @@ public class Enemy extends Rectangle {
         return points;
     }
 
+    public int getDamage() {
+        return damage;
+    }
+
+    public void setDamage(int damage) {
+        this.damage = damage;
+    }
 }

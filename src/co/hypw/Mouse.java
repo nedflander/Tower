@@ -6,6 +6,7 @@ import co.hypw.Towers.Tower;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
+import sun.security.krb5.internal.APOptions;
 
 public class Mouse implements EventHandler<MouseEvent> {
 
@@ -144,21 +145,22 @@ public class Mouse implements EventHandler<MouseEvent> {
                     }
                     switch (app.board.smenu.getSelected()) {
                         case GUY:
-                            if(app.getPoints() >= 25) {
-                                app.setPoints(app.getPoints()-25);
+                            if(GameApplication.points >= 25) {
+                                GameApplication.points = GameApplication.points-25;
                                 Guy newtower = new Guy((int) (tile.getX() + 5), ((int) tile.getY()) + 5);
                                 app.board.getChildren().add(newtower.getGroup());
                             }
                             break;
                         case SNIPER:
-                            if(app.getPoints() >= 100) {
-                                app.setPoints(app.getPoints() - 100);
+                            if(GameApplication.points >= 100) {
+                                GameApplication.points = GameApplication.points-100;
                                 Sniper newtower2 = new Sniper((int) (tile.getX()), ((int) tile.getY()));
                                 app.board.getChildren().add(newtower2.getGroup());
                                 app.board.smenu.toFront();
                             }
                             break;
                     }
+                    app.board.smenu.update();
                 }
             }
         }

@@ -23,12 +23,10 @@ public class SideMenu extends Pane {
     public Image guy, sniper;
     private EventHandler handler1, handler2;
     private Rectangle uno, dos;
-    GameApplication app;
+    public Text points, health;
 
 
     public SideMenu() {
-    //k
-
         setLayoutX(685);
         setLayoutY(45);
         Rectangle square = new Rectangle(160,660,Color.BLUEVIOLET);
@@ -36,11 +34,19 @@ public class SideMenu extends Pane {
         Button sidemenubutton = new Button(0,  0,  160,  30,  20, Color.FORESTGREEN, "MENU",  "menu");
         buttons.add(sidemenubutton);
 
-        Text points = new Text("Points: " + app.getPoints());
+        points = new Text("Points: " + GameApplication.points);
         points.setFont(Font.font(null, 25));
         points.setWrappingWidth(160);
         points.setTextAlignment(TextAlignment.CENTER);
-        points.setY(500);
+        points.setX(0);
+        points.setY(75);
+
+        health = new Text("Health: " + GameApplication.health);
+        health.setFont(Font.font(null, 25));
+        health.setWrappingWidth(160);
+        health.setTextAlignment(TextAlignment.CENTER);
+        health.setX(0);
+        health.setY(125);
 
         handler1 = event -> {
             setSelected(Selected.GUY);
@@ -50,7 +56,7 @@ public class SideMenu extends Pane {
             setSelected(Selected.SNIPER);
             System.out.println("y");
         };
-        getChildren().addAll(points, square,menutop,sidemenubutton);
+        getChildren().addAll(square,menutop,sidemenubutton,points, health);
         gen();
         addImages();
 
@@ -94,6 +100,12 @@ public class SideMenu extends Pane {
 
     public void setSelected(Selected selected) {
         this.selected = selected;
+    }
+
+    public void update() {
+        points.setText("Points: " + GameApplication.points);
+        health.setText("Health: " + GameApplication.health);
+
     }
 
     public enum Selected {

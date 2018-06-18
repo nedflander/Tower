@@ -6,8 +6,12 @@ import co.hypw.Enemies.MyYute;
 import co.hypw.Towers.Tower;
 import javafx.scene.Group;
 import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 
 import java.io.FileInputStream;
 import java.util.ArrayList;
@@ -57,6 +61,10 @@ public class Board  extends Group {
                             enemy = new Choch(28, 665);
                         }
                         que.add(enemy);
+
+                        if (GameApplication.health == 0) {
+                            this.cancel();
+                        }
                     }
                 },
                 0, 1000
@@ -103,4 +111,5 @@ public class Board  extends Group {
     public Timer getTimer() {
         return timer;
     }
+
 }

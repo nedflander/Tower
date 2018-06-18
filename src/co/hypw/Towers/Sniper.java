@@ -14,7 +14,7 @@ public class Sniper extends Tower {
         int radius = 200;
         this.cost = 20;
 
-        weapon = new Weapon(1, this);
+        weapon = new Weapon(2, this);
         bounds = new Circle(this.getX()+25, this.getY()+25, radius, Color.TRANSPARENT);
         bounds.setStroke(Color.BLACK);
 
