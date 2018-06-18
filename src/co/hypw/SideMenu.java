@@ -7,6 +7,9 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 
 import java.io.FileInputStream;
 import java.util.ArrayList;
@@ -20,15 +23,24 @@ public class SideMenu extends Pane {
     public Image guy, sniper;
     private EventHandler handler1, handler2;
     private Rectangle uno, dos;
+    GameApplication app;
 
 
     public SideMenu() {
+
+
         setLayoutX(685);
         setLayoutY(45);
         Rectangle square = new Rectangle(160,660,Color.BLUEVIOLET);
         Rectangle menutop = new Rectangle(160,170,Color.HOTPINK);
         Button sidemenubutton = new Button(0,  0,  160,  30,  20, Color.FORESTGREEN, "MENU",  "menu");
         buttons.add(sidemenubutton);
+
+        Text points = new Text("Points: " + app.getPoints());
+        points.setFont(Font.font(null, 25));
+        points.setWrappingWidth(160);
+        points.setTextAlignment(TextAlignment.CENTER);
+        points.setY(500);
 
         handler1 = event -> {
             setSelected(Selected.GUY);
@@ -38,7 +50,7 @@ public class SideMenu extends Pane {
             setSelected(Selected.SNIPER);
             System.out.println("y");
         };
-        getChildren().addAll(square,menutop,sidemenubutton);
+        getChildren().addAll(points, square,menutop,sidemenubutton);
         gen();
         addImages();
 
