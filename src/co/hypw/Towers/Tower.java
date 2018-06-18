@@ -20,11 +20,12 @@ public class Tower extends Rectangle {
     public Circle bounds;
     public static ArrayList<Tower> towers = new ArrayList<>();
 
-    public Tower(Type type, int x, int y, int frequency) {
+    public Tower(Type type, int x, int y, int frequency, int cost) {
         this.frequency = frequency;
         this.type = type;
         this.x = x;
         this.y = y;
+        this.cost = cost;
         setWidth(50);
         setHeight(50);
         setX(x);
